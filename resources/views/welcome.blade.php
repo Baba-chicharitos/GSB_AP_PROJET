@@ -13,6 +13,7 @@
         body {
             background-color: blue;
         }
+        
     </style>
 </body>
 </html>
