@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <img src="" alt="">
+    <img src="gsb.p" alt="">
 </body>
 </html>
