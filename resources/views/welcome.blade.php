@@ -6,6 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-    <img src="gsb.p" alt="">
+    <img class="logoGSP" 
+    src="gsb.png" width="225" height="150" 
+    style="float:left;margin:0 10px 0 20px;" />
+    <style>
+        body {
+            background-color: blue;
+        }
+    </style>
 </body>
 </html>
