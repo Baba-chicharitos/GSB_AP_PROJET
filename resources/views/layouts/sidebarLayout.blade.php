@@ -9,7 +9,7 @@
 </head>
 <body>
   <div name="menu" class="sidebar">
-    <img src="logo.png" width="100%">
+    <img src="{{ asset('images/gsbLogo.png') }}" width="100%">
     <h2><a>Outils</a></h2>
     <ul>
         <li><a href="#">Frais</a></li>
