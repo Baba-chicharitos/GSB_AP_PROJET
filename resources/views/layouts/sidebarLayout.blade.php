@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<li>
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>@yield('title', 'Mon site Laravel')</title>
   <link rel="stylesheet" href="{{asset('css/base.css')}}">
   @yield('css')
-</li>
+</head>
 <body>
   <div name="menu" class="sidebar">
     <img src="logo.png" width="100%">
@@ -14,10 +14,13 @@
     <ul>
         <li><a href="#">Frais</a></li>
         <ul>
-            <li><a href="formValidFrais.htm" >Enregistrer opération</a></li>
+            @yield('ulSideBar')
         </ul>
-    
     </ul>
   </div>
+  <div class="content">
+    @yield('content')
+  </div>
+ 
 </body>
 </html>
