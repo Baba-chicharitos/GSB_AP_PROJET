@@ -2,9 +2,14 @@
 
 @section('title', 'Suivi Remboursement')
 
+
 @section('css')
   <link rel="stylesheet" href="{{ asset('css/comptable.css') }}">
 @endsection
+
+@section('titreUL', 'Frais')
+
+
 
 @section('content')
 <h1>Suivi de remboursement des Frais</h1>

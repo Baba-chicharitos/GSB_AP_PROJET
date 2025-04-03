@@ -1,0 +1,76 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+/*------ Settings ------*/
+.arrow {
+    --color: white;
+    --size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    font-size: var(--size);
+    font-weight: bold;
+    user-select: none;
+    fill: var(--color);
+    scale: 0.6;
+}
+
+.arrow .chevron-right {
+    position: absolute;
+    animation: keyframes-return 0.5s backwards;
+}
+
+/* ------ On check event ------ */
+.arrow input:checked ~ .chevron-right {
+    animation: keyframes-rotate 0.5s backwards;
+}
+
+/* ------ Hide the default checkbox ------ */
+.arrow input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* ------ Animation ------ */
+@keyframes keyframes-rotate {
+    0% {
+        transform: rotate(180deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes keyframes-return {
+    0% {
+        transform: rotate(0deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+/* creation de la session UL */
+
+.titreUL {
+    width: 100%;
+    height: 6vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-right: 64%;
+    font-size: 1.5vw;
+    font-weight: bold;
+}
