@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choix saisie/consultation</title>
+    <style>
+        body {
+            display: grid;
+            grid-template-columns: repeat(5,1fr);
+            grid-template-rows: repeat(5,1fr);
+            height: 100vh;
+            background: linear-gradient(to right, #5a91d6, #6aa4e8);
+            font-family: Arial;
+        }
+        .logoGSB img {
+            height: 20vh;
+
+        }
+        .container {
+            transform: scale(140%);
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            grid-column: 3;
+            grid-row: 3;
+        }
+        .avatar img {
+            width: 10vh;
+            height: 10vh;
+            border-radius: 10%;
+            display: inline-block;
+        }
+        .choix {
+            display: block;
+            width: 80%;
+            padding: 7px;
+            margin: 20px;
+            border: none;
+            border-radius: 20px;
+            background: #5a91d6;
+            color : white;
+            text-align: center;
+            box-shadow: 8px 8px 15px -7px rgba(66, 68, 90, 1);
+        }
+        .changerCompte {
+            border: none;
+            color: rgb(172, 172, 172);
+            text-decoration: none;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 80%;
+            
+        }
+        .footer {
+            margin-top: 10px;
+            font-size: 12px;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <div class="logoGSB">
+        <img src="logoGSB.webp" alt="logoGSB">
+    </div>
+    <div class="container">
+        <div class="avatar">
+            <img src="avatar.jpg" alt="avatar">   
+        </div>
+        <p style="font-size: 90%;">Bienvenue, [utilisateur]</p>
+        <button name="saisie" class="choix">Saisie</button>
+        <button name="consultation" class="choix">Consultation</button>
+        <a href="index.html" class="changerCompte"> Changer de compte </a>
+        <div class="footer">© 2025 www.gsb.com - All Rights Reserved.</div>
+    </div>
+</body>
+</html>
