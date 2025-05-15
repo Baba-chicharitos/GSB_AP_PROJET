@@ -1,19 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <img class="logoGSP" 
-    src="gsb.png" width="225" height="150" 
-    style="float:left;margin:0 10px 0 20px;" />
-    <style>
-        body {
-            background-color: blue;
-        }
-        
-    </style>
-</body>
-</html>
+@extends('layouts.loginLayout')
+
+@section('css')
+@endsection
+
+@section('js')
+   <script>
+      const nameInput = document.getElementById('name');
+      const avatar = document.getElementById('imgAvatar');
+
+      nameInput.addEventListener('input', function() {
+         const name = nameInput.value;
+         avatar.src = `https://api.dicebear.com/9.x/croodles-neutral/svg?seed=${name}`;
+      });
+   </script>
+@endsection
+
+@section('content')
+   <div class="avatar">
+      <img id="imgAvatar" src="https://api.dicebear.com/9.x/croodles-neutral/svg" alt="avatar" />
+   </div>
+   <input type="text" id="name" name="userid" class="input-box" placeholder="Nom d’utilisateur" />
+   <input type="password" name="userpassword" class="input-box" placeholder="Mot de passe" />
+   <button class="login-button">→</button>
+   <div class="footer">© 2025 www.gsb.com - All Rights Reserved.</div>
+@endsection

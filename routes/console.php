@@ -8,3 +8,10 @@ Artisan::command('inspire', function () {
     /** @var ClosureCommand $this */
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
+
+Artisan::command('publish', function () {
+    $this->info('Pour le moment : 
+    - / welcome
+    - /cliConsulter
+    - /comValidation');
+});
