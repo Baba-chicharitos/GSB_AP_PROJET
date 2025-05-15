@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saisie des frais de visite</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            background: linear-gradient(90deg, rgba(119,170,221,1) 0%,  rgba(70,118,178,1) 100%);
+            height: 100vh;
+            color: white;
+        }
+
+        .sidebar {
+            width: 15%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(70,118,178,1) 0%, rgba(119,170,221,1) 100%);
+            color: white;
+            padding: 2%;
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            font-size: 2vw;
+            
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 0.521vw;
+            margin: 0.25vw 0;
+            font-size: 1vw;
+        }
+
+        .sidebar a:hover {
+            background-color: rgba(119, 170, 221, 0.5)
+            
+        }
+
+        .content {
+            margin-left: 1%;
+            padding: 4%;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        table {
+            width: 50vw;
+            height: 15vh;
+            border-collapse: collapse;
+            background: white;
+            color: black;
+            margin-top: 2%;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            padding: 1%;
+            text-align: center;
+        }
+
+        button {
+            padding: 1% 2%;
+            border: none;
+            border-radius: 0.5%;
+            cursor: pointer;
+            margin-right: 1%;
+        }
+
+        .fraisForfait {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .buttons {
+            margin-top: 2%;
+        }
+
+        .btn-clear {
+            background-color: #d9534f;
+            color: white;
+        }
+
+        .btn-submit {
+            background-color: #5cb85c;
+            color: white;
+        }
+    </style>
+
+<script language="javascript">
+    function ajoutLigne(pNumero) {
+    // Masque le bouton en cours
+    document.getElementById("but" + pNumero).setAttribute("hidden", "true");	
+    pNumero++; // Incrémente le numéro de ligne
+    
+    var laDiv = document.getElementById("lignes"); // Récupère le conteneur principal
+
+    // Créer un div contenant la nouvelle ligne
+    var ligneDiv = document.createElement("div");
+    ligneDiv.setAttribute("style", "margin-top: 5px;"); // Ajout d'un léger espacement
+    laDiv.appendChild(ligneDiv);
+
+    var titre = document.createElement("label"); // Crée un label
+    ligneDiv.appendChild(titre);
+    titre.setAttribute("class", "titre");
+    titre.innerHTML = (pNumero < 10 ? "0" : "") + pNumero + " : ";
+
+    var ladate = document.createElement("input"); // Champ date
+    ligneDiv.appendChild(ladate);
+    ladate.setAttribute("name", "FRA_AUT_DAT" + pNumero);
+    ladate.setAttribute("size", "12");
+    ladate.setAttribute("class", "zone");
+    ladate.setAttribute("type", "date");
+
+    var libelle = document.createElement("input"); // Champ libellé
+    ligneDiv.appendChild(libelle);
+    libelle.setAttribute("name", "FRA_AUT_LIB" + pNumero);
+    libelle.setAttribute("size", "30");
+    libelle.setAttribute("class", "zone");
+    libelle.setAttribute("type", "text");
+    libelle.setAttribute("placeholder", "Libellé")
+
+    var mont = document.createElement("input"); // Champ montant
+    ligneDiv.appendChild(mont);
+    mont.setAttribute("name", "FRA_AUT_MONT" + pNumero);
+    mont.setAttribute("size", "6");
+    mont.setAttribute("class", "zone");
+    mont.setAttribute("type", "number");
+    mont.setAttribute("placeholder", "Montant")
+
+    var bouton = document.createElement("input"); // Bouton +
+    ligneDiv.appendChild(bouton);
+    bouton.setAttribute("onClick", "ajoutLigne(" + pNumero + ");");
+    bouton.setAttribute("type", "button");
+    bouton.setAttribute("value", "+");
+    bouton.setAttribute("class", "zone");
+    bouton.setAttribute("id", "but" + pNumero);
+}
+</script>
+
+</head>
+<body>
+    <div class="sidebar">
+        <img src="logo.png" width="100%">
+        <h2>Outils</h2>
+        <ul>
+            <li  style="font-size:1vw;">Frais</li>
+            <ul style="font-size:1vw">
+                <li><a href="">Nouveau</a></li>
+                <li><a href="">Consulter</a></li>
+            </ul>
+        </ul>
+    </div>
+    <div class="content">
+        <h1> Saisie </h1>
+        <form name="formConsultFrais" method="post" action="chercheFrais.php">
+            <h2>Période d'engagement</h2>
+            <label>Mois (2 chiffres) : </label>
+            <input type="number" name="moisPeriode" size="4" maxlength="2" />
+            <label>Année (4 chiffres) : </label>
+            <input type="number" name="anneePeriode" size="4" maxlength="4" />
+            
+            <h2>Frais au forfait</h2>
+            <table>
+                <tr>
+                    <th>Repas midi</th><th>Nuitée</th><th>Étape</th><th>Km</th>
+                </tr>
+                <tr>
+                    <td><input type="number" name="repasmidi" class="fraisForfait"></td>
+                    <td><input type="number" name="nuitee" class="fraisForfait"></td>
+                    <td><input type="number" name="etape" class="fraisForfait"></td>
+                    <td><input type="number" name="km" maxlength="5" class="fraisForfait"></td>
+                </tr>
+            </table>
+            
+            <h2>Hors forfait</h2>
+            <div style="clear:left;" id="lignes">
+                
+                <label class="titre" > 01 : </label>
+                <input type="date" size="12" name="FRA_AUT_DAT1" class="zone"/><input type="text" size="30" name="FRA_AUT_LIB1" class="zone" placeholder="Libellé"/><input class="zone" size="6" name="FRA_AUT_MONT1" type="number" placeholder="Montant"/>				
+                <input type="button" id="but1" value="+" onclick="ajoutLigne(1);" class="zone" />			
+            </div>
+
+            <div class="buttons">
+                <button type="reset" class="btn-clear">Effacer</button>
+                <button type="submit" class="btn-submit">Envoyer</button>
+            </div>
+            
+
+        
+    </div>
+
+            
+        </form>
+</body>
+</html>
